@@ -1,0 +1,24 @@
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy requirements.txt into the container
+COPY requirements.txt /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install -r requirements.txt
+
+# Copy the rest of the application code into the container
+COPY ./src /app
+
+# Set the environment variables for Flask
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# Expose the Flask port (default 5000)
+EXPOSE 5000
+
+# Start the Flask app
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
