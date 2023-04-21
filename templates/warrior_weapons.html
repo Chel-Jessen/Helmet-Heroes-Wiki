@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warrior Weapons | Helmet Heroes Wiki</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/warrior_weapons.css') }}">
+</head>
+<body>
+    <div class="main">
+        <div class="page-header">
+            <h1><b>Helmet Heroes Reborn Wiki</b></h1>
+            <img src="{{ url_for('static', filename='/images/helmet-heroes.png') }}" alt="Helmet Heroes Main Image">
+        </div>
+        <div class="page-content">
+            <div class="content">
+                <table class="content-table">
+                    <tr class="content-table-header">
+                        <th><b>Item</b></th>
+                        <th><b>Power</b></th>
+                        <th><b>Level</b></th>
+                        <th><b>Buying Price</b></th>
+                        <th><b>Selling Price</b></th>
+                        <th><b>Description Price</b></th>
+                        <th><b>Merchant</b></th>
+                        <th><b>Mob Drops</b></th>
+                        <th><b>Two Handed</b></th>
+                    </tr>
+                    {% for item in items %}
+                        <tr class="content-table-row">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.power }}</td>
+                            <td>{{ item.level }}</td>
+                            <td>{{ item.buying_price }}</td>
+                            <td>{{ item.selling_price }}</td>
+                            <td>{{ item.description }}</td>
+                            <td>{{ item.merchant }}</td>
+                            <td>{{ item.mob_drops }}</td>
+                            <td>{{ item.two_handed }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

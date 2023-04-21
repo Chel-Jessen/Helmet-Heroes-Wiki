@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Helmet Heroes Wiki</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
 </head>
 <body>
-
+    <div class="main">
+        <div class="page-header">
+            <h1><b>Helmet Heroes Reborn Wiki</b></h1>
+            <img src="{{ url_for('static', filename='/images/helmet-heroes.png') }}" alt="Helmet Heroes Main Image">
+        </div>
+        <div class="page-content">
+            <div class="content-title">
+                <p>Welcome to the</p>
+                <h2>Helmet Heroes Reborn Wiki</h2>
+                <p>the unofficial wiki for Helmet Heroes Reborn</p>
+            </div>
+            <div class="content">
+                <table class="content-table">
+                    <tr>
+                        <th colspan="4" class="table-header"><b>Table of Contents</b></th>
+                    </tr>
+                    <tr class="content-table-row">
+                        <td class="content-table-row-data"><a href="{{ url_for('warrior_weapons') }}">Warrior Weapons</a></td>
+                        <td class="content-table-row-data"><a href="{{ url_for('archer_weapons') }}">Archer Weapons</a></td>
+                        <td class="content-table-row-data"><a href="{{ url_for('mage_weapons') }}">Mage Weapons</a></td>
+                        <td class="content-table-row-data"><a href="{{ url_for('cowboy_weapons') }}">Cowboy Weapons</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Made by Chel Jessen</p>
+        <p><a href="https://github.com/Chel-Jessen/Helmet-Heroes-Wiki">Source code</a></p>
+    </div>
 </body>
 </html>
