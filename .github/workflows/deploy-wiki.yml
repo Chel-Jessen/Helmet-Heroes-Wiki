@@ -1,0 +1,12 @@
+name: Deploy Wiki
+run-name: Updating the wiki
+on:
+  push:
+    branches:
+      - main
+jobs:
+  send-request:
+    runs-on: ubuntu-latest
+    steps:
+      -name: Send GET request
+      run: curl -X GET hhr-wiki.cheljessen.net:8080/github
