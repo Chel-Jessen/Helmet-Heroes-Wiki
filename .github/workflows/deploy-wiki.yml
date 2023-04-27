@@ -8,4 +8,5 @@ jobs:
   send-request:
     runs-on: ubuntu-latest
     steps:
-      run: curl -X GET hhr-wiki.cheljessen.net:6402/github
+      - name: Send GET request
+        run: curl -X GET hhr-wiki.cheljessen.net:6402/github
