@@ -1,17 +1,38 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import json
+from utils import load_data
 
 app = Flask(__name__)
 
+DATA_PATH = "./wiki-data/data.json"
+wiki_data = load_data(DATA_PATH)
+
 
 @app.route('/')
-def hello_world():
+def index():
     return render_template("index.html")
+
+
+@app.route("/updateData")
+def update_data():
+    global wiki_data
+    if request.is_json:
+        data = request.get_json()
+        with open(DATA_PATH) as file:
+            json.dump(data, file)
+        wiki_data = load_data(DATA_PATH)
+        return
+    return "", 400
+
+
+@app.route("/version")
+def version():
+    return
 
 
 @app.route("/warrior_weapons")
 def warrior_weapons():
-    # TODO: load items via DB or xlsx file
-    # TODO: give items their own class
+    # TODO: change items list to Spreadsheet JSON format
     items = [
         {
             "name": "Stick",
@@ -52,13 +73,13 @@ def warrior_weapons():
             "level": "6",
             "buying_price": "551",
             "selling_price": "137 (248)",
-            "description": "An extenable fighting toy for little kids.",
+            "description": "An extendable fighting toy for little kids.",
             "merchant": "Sales Man (Training Grounds)",
             "mob_drops": "None",
             "two_handed": "No"
         }
     ]
-    return render_template("warrior_weapons.html", items=items)
+    return render_template("weapons.html", items=items)
 
 
 @app.route("/archer_weapons")
