@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
 </head>
 <body>
-    <nav>
+    <div class="main">
+        <div class="page-header">
+            <h1><b>Helmet Heroes Reborn Wiki</b></h1>
+            </div>
+                <nav>
         <ul>
             <li><a href="/">Startseite</a></li>
              <li><a href="#">Weapons</a>
@@ -51,10 +55,7 @@
              </li>
         </ul>
     </nav>
-
-    <div class="main">
-        <div class="page-header">
-            <h1><b>Helmet Heroes Reborn Wiki</b></h1>
+            <div class="page-header">
             <img src="{{ url_for('static', filename='/images/helmet-heroes.png') }}" alt="Helmet Heroes Main Image">
         </div>
         <div class="page-content">
