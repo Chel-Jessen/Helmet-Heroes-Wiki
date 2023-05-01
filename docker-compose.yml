@@ -8,6 +8,8 @@ services:
     container_name: flask_app
     expose:
       - "5000"
+    volumes:
+      - ./wiki-data/data.json:/app/wiki-data/data.json
 
   nginx:
     build:
