@@ -24,7 +24,7 @@ def update_data():
                 with open(DATA_PATH, "w") as file:
                     json.dump(data, file)
                 wiki_data = load_data(DATA_PATH)
-    return 200
+    return jsonify({"status": 200})
 
 
 @app.route("/version", methods=["GET"])
