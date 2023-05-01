@@ -35,7 +35,7 @@ def version():
 
 @app.route("/<classname>_<equipment>", methods=["GET"])
 def class_equipments(classname, equipment):
-    allowed_classes = ["warrior", "archer", "mage", "cowboy"]
+    allowed_classes = ["warrior", "archer", "wizard", "cowboy"]
     allowed_equipments = ["weapons", "helmets", "armor", "pants", "shoes"]
     if classname.lower() not in allowed_classes:
         return abort(404)
