@@ -20,7 +20,7 @@ def update_data():
         data = request.get_json(silent=True)
         if data:
             if not compare_json_md5_hash(data, DATA_PATH):
-                with open(DATA_PATH) as file:
+                with open(DATA_PATH, "w") as file:
                     json.dump(data, file)
                 wiki_data = load_data(DATA_PATH)
     return
