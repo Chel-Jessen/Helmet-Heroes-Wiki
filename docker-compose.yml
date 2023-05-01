@@ -9,7 +9,7 @@ services:
     expose:
       - "5000"
     volumes:
-      - ./wiki-data/data.json:/app/wiki-data/data.json
+      - ./wiki-data/:/app/wiki-data/
 
   nginx:
     build:
