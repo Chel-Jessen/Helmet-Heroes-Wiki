@@ -18,12 +18,13 @@ def update_data():
     global wiki_data
     if request.is_json:
         data = request.get_json(silent=True)
+        print(data)
         if data:
             if not compare_json_md5_hash(data, DATA_PATH):
                 with open(DATA_PATH, "w") as file:
                     json.dump(data, file)
                 wiki_data = load_data(DATA_PATH)
-    return
+    return 200
 
 
 @app.route("/version", methods=["GET"])
