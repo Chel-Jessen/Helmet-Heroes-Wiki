@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, abort, jsonify
 import json
-from utils import load_data
+from utils import load_data, refactor_url_for_key, compare_json_md5_hash, json_md5_hash
 
 app = Flask(__name__)
 
@@ -13,88 +13,39 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/updateData")
+@app.route("/updateData", methods=["POST"])
 def update_data():
     global wiki_data
     if request.is_json:
-        data = request.get_json()
-        with open(DATA_PATH) as file:
-            json.dump(data, file)
-        wiki_data = load_data(DATA_PATH)
-        return
-    return "", 400
-
-
-@app.route("/version")
-def version():
+        data = request.get_json(silent=True)
+        if data:
+            if not compare_json_md5_hash(data, wiki_data):
+                with open(DATA_PATH) as file:
+                    json.dump(data, file)
+                wiki_data = load_data(DATA_PATH)
     return
 
 
-@app.route("/warrior_weapons")
-def warrior_weapons():
-    # TODO: change items list to Spreadsheet JSON format
-    items = [
-        {
-            "name": "Stick",
-            "power": "1",
-            "level": "1",
-            "buying_price": "N/A",
-            "selling_price": "1",
-            "description": "A plain stick for hitting things.",
-            "merchant": "Sales Man (Training Grounds)",
-            "mob_drops": "Green Bouncer, Purple Bouncer, Green Walker, Mushroom Ball",
-            "two_handed": "No"
-        },
-        {
-            "name": "Red Plastic Sword",
-            "power": "4",
-            "level": "2",
-            "buying_price": "129",
-            "selling_price": "31 (58)",
-            "description": "Just a crappy toy with lifetime warranty of just two days.",
-            "merchant": "Sales Man (Training Grounds)",
-            "mob_drops": "Mushroom Squish, Crab",
-            "two_handed": "No"
-        },
-        {
-            "name": "Blue Plastic Sword",
-            "power": "5",
-            "level": "4",
-            "buying_price": "230",
-            "selling_price": "57 (103)",
-            "description": "Still a piece of junk, but at least it's better than a red plastic sword.",
-            "merchant": "Sales Man (Training Grounds)",
-            "mob_drops": "None",
-            "two_handed": "No"
-        },
-        {
-            "name": "Plastic Saber",
-            "power": "7",
-            "level": "6",
-            "buying_price": "551",
-            "selling_price": "137 (248)",
-            "description": "An extendable fighting toy for little kids.",
-            "merchant": "Sales Man (Training Grounds)",
-            "mob_drops": "None",
-            "two_handed": "No"
-        }
-    ]
-    return render_template("weapons.html", items=items)
+@app.route("/version", methods=["GET"])
+def version():
+    json_hash = json_md5_hash(wiki_data)
+    return jsonify({"hash": json_hash}), 200
 
 
-@app.route("/archer_weapons")
-def archer_weapons():
-    return "Hello Archer World"
-
-
-@app.route("/mage_weapons")
-def mage_weapons():
-    return "Hello Mage World"
-
-
-@app.route("/cowboy_weapons")
-def cowboy_weapons():
-    return "Hello Cowboy World"
+@app.route("/<classname>_<equipment>", methods=["GET"])
+def class_equipments(classname, equipment):
+    allowed_classes = ["warrior", "archer", "mage", "cowboy"]
+    allowed_equipments = ["weapons", "helmets", "armor", "pants", "shoes"]
+    if classname.lower() not in allowed_classes:
+        return abort(404)
+    if equipment.lower() not in allowed_equipments:
+        return abort(404)
+    # title is the same as the key for the JSON wiki data
+    title = refactor_url_for_key(request.url.split("/")[-1])
+    try:
+        return render_template("weapons.html", items=wiki_data[title][1:], title=title, headers=wiki_data[title][0])
+    except KeyError:
+        return abort(500)
 
 
 if __name__ == '__main__':
