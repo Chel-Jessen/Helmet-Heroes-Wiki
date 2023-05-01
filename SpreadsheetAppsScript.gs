@@ -1,4 +1,4 @@
-var urls = ["http://hhr-wiki.cheljessen.net/updateData", "https://helmet-heroes-reborn-bot.dakmj32dsalcx.repl.co/api/updateData"];
+// urls to servers
 
 function sendAllSheetsAsJSON() {
   // send spreadsheet as JSON to server
