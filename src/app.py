@@ -43,10 +43,8 @@ def class_equipments(classname, equipment):
         return abort(404)
     # title is the same as the key for the JSON wiki data
     title = refactor_url_for_key(request.url.split("/")[-1])
-    try:
-        return render_template("equipment.html", items=wiki_data[title][1:], title=title, headers=wiki_data[title][0])
-    except KeyError:
-        return abort(500)
+    return render_template("equipment.html", items=wiki_data[title][1:], title=title, headers=wiki_data[title][0])
+
 
 
 if __name__ == '__main__':
