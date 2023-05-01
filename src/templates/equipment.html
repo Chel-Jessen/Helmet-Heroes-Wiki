@@ -68,8 +68,8 @@
                     </tr>
                     {% for item in items %}
                         <tr class="content-table-row">
-                            {% for key in item %}
-                                <td>{{ item[key] }}</td>
+                            {% for attribute in item %}
+                                <td>{{ attribute }}</td>
                             {% endfor %}
                         </tr>
                     {% endfor %}
