@@ -2,18 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Helmet Heroes Wiki</title>
+    <title>{{ title }} | Helmet Heroes Wiki</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
 </head>
 <body>
-    <div class="main">
-        <div class="page-header">
-            <h1><b>Helmet Heroes Reborn Wiki</b></h1>
-        </div>
-            <nav>
+    <nav>
         <ul>
             <li><a href="/">Startseite</a></li>
-             <li><a href="#">Weapons</a>
+             <li><a href="equipment.html">Weapons</a>
                 <ul>
                     <li><a href="#">Warrior Weapons</a></li>
                     <li><a href="#">Archer Weapons</a></li>
@@ -29,7 +25,7 @@
                     <li><a href="#">Cowboy Helmets</a></li>
                 </ul>
              </li>
-            <li><a href="#">Armor</a>
+            <li><a href="equipment.html">Armor</a>
                 <ul>
                     <li><a href="#">Warrior Armor</a></li>
                     <li><a href="#">Archer Armor</a></li>
@@ -37,7 +33,7 @@
                     <li><a href="#">Cowboy Armor</a></li>
                 </ul>
              </li>
-            <li><a href="#">Legs</a>
+            <li><a href="equipment.html">Legs</a>
                 <ul>
                     <li><a href="#">Warrior Legs</a></li>
                     <li><a href="#">Archer Legs</a></li>
@@ -45,7 +41,7 @@
                     <li><a href="#">Cowboy Legs</a></li>
                 </ul>
              </li>
-            <li><a href="#">Shoes</a>
+            <li><a href="equipment.html">Shoes</a>
                 <ul>
                     <li><a href="#">Warrior Shoes</a></li>
                     <li><a href="#">Archer Shoes</a></li>
@@ -55,20 +51,30 @@
              </li>
         </ul>
     </nav>
+
+    <div class="main">
         <div class="page-header">
+            <h1><b>Helmet Heroes Reborn Wiki</b></h1>
             <img src="{{ url_for('static', filename='/images/helmet-heroes.png') }}" alt="Helmet Heroes Main Image">
         </div>
         <div class="page-content">
-            <div class="content-title">
-                <p>Welcome to the</p>
-                <h2>Helmet Heroes Reborn Wiki</h2>
-                <p>the unofficial wiki for Helmet Heroes Reborn</p>
+            <div class="content">
+                <table class="content-table">
+                    <tr class="content-table-header">
+                        {% for header in headers %}
+                            <th><b>{{ header }}</b></th>
+                        {% endfor %}
+                    </tr>
+                    {% for item in items %}
+                        <tr class="content-table-row">
+                            {% for key in item %}
+                                <td>{{ item[key] }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
-    </div>
-    <div class="footer">
-        <p>Made by Chel Jessen & Sina</p>
-        <p><a href="https://github.com/Chel-Jessen/Helmet-Heroes-Wiki">Source code</a></p>
     </div>
 </body>
 </html>

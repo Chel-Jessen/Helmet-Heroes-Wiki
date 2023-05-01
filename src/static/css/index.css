@@ -1,34 +1,91 @@
 :root{
-    --primary-background: #8CDC86;
-    --secondary-background: #46CA24;
+    --primary-background: #0b7708;
+    --secondary-background: #0D8E0A;
 }
 
 body{
     font-family: rubik,helvetica,arial,sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #000000;
+    color: #fafafa;
+    background-image: repeating-conic-gradient(#0b7708 0deg 14deg, #0D8E0A 16deg 31deg, #0b7708 32deg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
     overflow-x: hidden;
 }
 
+nav{
+    height: 80px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: 21%;
+}
+
+nav ul{
+    float: none;
+}
+
+nav ul li{
+    float: left;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li a{
+    font-family: rubik,helvetica,arial,sans-serif;
+    font-size: 24px;
+    color: #fafafa;
+    text-decoration: none;
+    padding: 28px;
+    display: block;
+}
+
+nav ul li ul{
+    display: none;
+    position: absolute;
+    background-color: rgba(1, 30, 1, 0.62);
+    padding: 7px;
+    border-radius: 12px 12px 12px 12px;
+}
+
+nav ul li:hover ul{
+    display: block;
+}
+
+nav ul li ul li a{
+    color: #FFFFFF;
+    padding: 16px 20px;
+    border-radius: 10px;
+}
+
+nav ul li ul li a:hover{
+    background-color: rgba(8, 255, 2, 0.67);
+}
+
 .main{
-    width: 90vw;
+    width: 80vw;
     height: 100vh;
     padding-left: 5vw;
     padding-right: 5vw;
 }
 
 .page-header{
-    font-size: 150%;
-    display: flex;
+    font-size: 180%;
+    display: block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image:linear-gradient(45deg, #ffff, #ffffe7, #fad7b9, #f5bd84);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
 }
 
+.page-header h1{
+    text-align: center;
+}
 
 .page-header img{
-    width: 100%;
+    width: 110%;
     height: 500px;
 }
 
@@ -37,7 +94,6 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-background);
     padding: 20px;
 }
 
@@ -46,9 +102,19 @@ body{
     text-align: center;
 }
 
-.content-title >p, h2{
+.content-title >p{
     margin-block-start: 0.5rem;
     margin-block-end: 0;
+    font-size: 120%;
+}
+
+.content-title h2{
+    margin-block-start: 0.5rem;
+    margin-block-end: 0;
+    font-size: 180%;
+     background-image:linear-gradient(45deg, #ffff, #ffffe7, #fad7b9, #f5bd84);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
 }
 
 .content-table {
@@ -58,20 +124,36 @@ body{
     margin-top: 20px;
 }
 
+/* Für Weapon.html*/
+.content-table-header{
+    background-color: #057705;
+}
+
+.content-table-row > td, .content-table-header > th {
+    padding: 10px;
+    border: 4px solid rgba(112, 208, 13, 0.32);
+    text-align: center;
+}
+
+
+/*Ende*/
+
 .content-table-row-data, .table-header {
     padding: 10px;
-    border: 4px solid #FFFFFF;
+    border: 4px solid rgba(112, 208, 13, 0.32);
     text-align: center;
 }
 
 .table-header {
     font-size: 120%;
-    text-decoration-line: underline;
-    background-color: var(--secondary-background);
+}
+
+.content-table-row-data a {
+    color: #011e01;
+    border-bottom: 1px solid #08ff02;
 }
 
 .footer {
-    position: absolute;
     width: 90vw;
     height: 20px;
     margin-left: 5vw;
@@ -85,4 +167,5 @@ body{
     display: inline;
     margin-block-start: 0;
     margin-block-end: 0;
+    color: #011e01;
 }
