@@ -67,9 +67,8 @@
                     </tr>
                     {% for item in items %}
                         <tr class="content-table-row">
-                            <td>{{ item }}</td>
                             {% for key in item[1:] %}
-                                <td>{{ item[key] }}</td>
+                                <td><img src="{{ item[key] }}" alt="Image"/></td>
                             {% endfor %}
                         </tr>
                     {% endfor %}
