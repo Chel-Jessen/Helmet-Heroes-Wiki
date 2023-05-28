@@ -3,61 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Helmet Heroes Wiki</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico">
 </head>
 <body>
     <div class="main">
-        <div class="page-header">
-            <h1><b>Helmet Heroes Reborn Wiki</b></h1>
-        </div>
+        <header>
+            <h1 class="a-logo"><b>Helmet Heroes Reborn Wiki</b></h1>
+            <div class="menu-icon">
+                <span class="bar"></span>
+            </div>
+
             <nav>
+                <h1 class="t-logo"><b>Helmet Heroes Reborn Wiki</b></h1>
         <ul>
-            <li><a href="/">Startseite</a></li>
-             <li><a href="#">Weapons</a>
+            <li><a href="/">Home</a></li>
+             <li class="menu-btn"><a href="#">Weapons</a>
                 <ul>
                     <li><a href="/warrior_weapons">Warrior Weapons</a></li>
                     <li><a href="/archer_weapons">Archer Weapons</a></li>
-                    <li><a href="/mage_weapons">Mage Weapons</a></li>
+                    <li><a href="/wizard_weapons">Wizard Weapons</a></li>
                     <li><a href="/cowboy_weapons">Cowboy Weapons</a></li>
                 </ul>
              </li>
-            <li><a href="#">Helmets</a>
+            <li class="menu-btn"><a href="#">Helmets</a>
                 <ul>
                     <li><a href="/warrior_helmets">Warrior Helmets</a></li>
                     <li><a href="/archer_helmets">Archer Helmets</a></li>
-                    <li><a href="/mage_helmets">Mage Helmets</a></li>
+                    <li><a href="/wizard_helmets">Wizard Helmets</a></li>
                     <li><a href="/cowboy_helmets">Cowboy Helmets</a></li>
                 </ul>
              </li>
-            <li><a href="#">Armor</a>
+            <li class="menu-btn"><a href="#">Armor</a>
                 <ul>
                     <li><a href="/warrior_armor">Warrior Armor</a></li>
                     <li><a href="/archer_armor">Archer Armor</a></li>
-                    <li><a href="/mage_armor">Mage Armor</a></li>
+                    <li><a href="/wizard_armor">Wizard Armor</a></li>
                     <li><a href="/cowboy_armor">Cowboy Armor</a></li>
                 </ul>
              </li>
-            <li><a href="#">Pants</a>
+            <li class="menu-btn"><a href="#">Pants</a>
                 <ul>
                     <li><a href="/warrior_pants">Warrior Pants</a></li>
                     <li><a href="/archer_pants">Archer Pants</a></li>
-                    <li><a href="/mage_pants">Mage Pants</a></li>
+                    <li><a href="/wizard_pants">Wizard Pants</a></li>
                     <li><a href="/cowboy_pants">Cowboy Pants</a></li>
                 </ul>
              </li>
-            <li><a href="#">Shoes</a>
+            <li class="menu-btn"><a href="#">Shoes</a>
                 <ul>
                     <li><a href="/warrior_shoes">Warrior Shoes</a></li>
                     <li><a href="/archer_shoes">Archer Shoes</a></li>
-                    <li><a href="/mage_shoes">Mage Shoes</a></li>
+                    <li><a href="/wizard_shoes">Wizard Shoes</a></li>
                     <li><a href="/cowboy_shoes">Cowboy Shoes</a></li>
                 </ul>
              </li>
         </ul>
     </nav>
-        <div class="page-header">
-            <img src="{{ url_for('static', filename='/images/helmet-heroes.png') }}" alt="Helmet Heroes Main Image">
-        </div>
+</header>
+        <div id="img-div">
+        <img id="main-img" src="../static/images/helmet-heroes.png" alt="">
+    </div>
+
+
         <div class="page-content">
             <div class="content-title">
                 <p>Welcome to the</p>
@@ -70,5 +80,8 @@
         <p>Made by Chel Jessen & Sina</p>
         <p><a href="https://github.com/Chel-Jessen/Helmet-Heroes-Wiki">Source code</a></p>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../static/script.js"></script>
 </body>
 </html>
