@@ -68,7 +68,7 @@
                     {% for item in items %}
                         <tr class="content-table-row">
                             {% for key in item %}
-                                {% if "discordapp" in item[key] %}
+                                {% if key == "Image" %}
                                     <td><img src="{{ item[key] }}" alt="Image"></td>
                                 {% else %}
                                     <td>{{ item[key] }}</td>
