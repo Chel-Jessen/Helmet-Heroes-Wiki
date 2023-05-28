@@ -68,10 +68,7 @@
                     {% for item in items %}
                         <tr class="content-table-row">
                             {% for key in item %}
-                                <script>
-                                    console.log({{ key }})
-                                </script>
-                                {% if key == "Image" %}
+                                {% if key == 0 %}
                                     <td><img src="{{ item[key] }}" alt="Image"></td>
                                 {% else %}
                                     <td>{{ item[key] }}</td>
