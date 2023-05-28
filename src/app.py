@@ -18,12 +18,13 @@ def update_data():
     global wiki_data
     if request.is_json:
         data = request.get_json(silent=True)
+        print(data)
         if data:
-            if not compare_json_md5_hash(data, wiki_data):
-                with open(DATA_PATH) as file:
+            if not compare_json_md5_hash(data, DATA_PATH):
+                with open(DATA_PATH, "w") as file:
                     json.dump(data, file)
                 wiki_data = load_data(DATA_PATH)
-    return
+    return jsonify({"status": 200})
 
 
 @app.route("/version", methods=["GET"])
@@ -34,7 +35,7 @@ def version():
 
 @app.route("/<classname>_<equipment>", methods=["GET"])
 def class_equipments(classname, equipment):
-    allowed_classes = ["warrior", "archer", "mage", "cowboy"]
+    allowed_classes = ["warrior", "archer", "wizard", "cowboy"]
     allowed_equipments = ["weapons", "helmets", "armor", "pants", "shoes"]
     if classname.lower() not in allowed_classes:
         return abort(404)
@@ -42,10 +43,7 @@ def class_equipments(classname, equipment):
         return abort(404)
     # title is the same as the key for the JSON wiki data
     title = refactor_url_for_key(request.url.split("/")[-1])
-    try:
-        return render_template("equipment.html", items=wiki_data[title][1:], title=title, headers=wiki_data[title][0])
-    except KeyError:
-        return abort(500)
+    return render_template("equipment.html", items=wiki_data[title][1:], title=title, headers=wiki_data[title][0])
 
 
 if __name__ == '__main__':
