@@ -68,11 +68,7 @@
                     {% for item in items %}
                         <tr class="content-table-row">
                             {% for i in item %}
-                                {% if  i == 0 %}
-                                    <td><img src="{{ item[i] }}" alt="Image"></td>
-                                {% else %}
-                                    <td>{{ item[i] }}</td>
-                                {% endif %}
+                                <td>{{ item[i] }}</td>
                             {% endfor %}
                         </tr>
                     {% endfor %}
