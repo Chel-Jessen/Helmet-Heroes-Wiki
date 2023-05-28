@@ -68,7 +68,7 @@
                     {% for item in items %}
                         <tr class="content-table-row">
                             {% for key in item %}
-                                {% if  item[key] == "https://media.discordapp.net/attachments/1102526404857450597/1110321826153889853/image.png" %}
+                                {% if  key == "https://media.discordapp.net/attachments/1102526404857450597/1110321826153889853/image.png" %}
                                     <td><img src="{{ key }}" alt="Image"></td>
                                 {% else %}
                                     <td>{{ key }}</td>
