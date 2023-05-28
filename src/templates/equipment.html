@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ title }} | Helmet Heroes Wiki</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico">
 </head>
 <body>
     <nav>
@@ -68,8 +69,8 @@
                     {% for item in items %}
                         <tr class="content-table-row">
                                 <td><img src="{{ item[0] }}" alt=""></td>
-                                {% for elem in item[1:] %}
-                                    <td>{{ item[elem] }}</td>
+                                {% for elem in item %}
+                                    <td>{{ elem }}</td>
                                 {% endfor %}
                         </tr>
                     {% endfor %}
